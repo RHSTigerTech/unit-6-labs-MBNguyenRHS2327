@@ -140,4 +140,43 @@ public class MyTools {
 
     return hexadecimal;
   }
+
+  public static boolean readTwoOptions(String prompt, String confirm, String deny){
+    // initialize a Scanner object
+    Scanner userInput = new Scanner(System.in);
+
+    // Print the prompt that the user wants to use
+    System.out.print(prompt);
+
+    while (!userInput.nextLine().equalsIgnoreCase(confirm) || !userInput.nextLine().equalsIgnoreCase(deny)) {
+      userInput.nextLine(); // This takes whatever non double the user entered and throws it away
+      System.out.print("Error\n" + prompt); // This prints Error then re-prompts the user
+    }
+
+    // save the users input into a variable
+    String input = userInput.nextLine();
+
+    if (input.equalsIgnoreCase(confirm)){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // public static int readMultiChoice(String prompt, String[] options) {
+  //   // initialize a Scanner object
+  //   Scanner userInput = new Scanner(System.in);
+
+  //   // Print the prompt that the user wants to use
+  //   System.out.print(prompt);
+
+  //   while (!options.) {
+  //     userInput.nextLine(); // This takes whatever non double the user entered and throws it away
+  //     System.out.print("Error\n" + prompt); // This prints Error then re-prompts the user
+  //   }
+
+  //   // save the users input into a variable
+  //   String input = userInput.nextLine();
+
+  // }
 }
