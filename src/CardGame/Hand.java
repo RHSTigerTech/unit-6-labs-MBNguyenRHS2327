@@ -2,24 +2,45 @@ package CardGame;
 
 public class Hand {
   private Card[] hand;
+  private String owner;
 
-  public Hand(Card c1, Card c2){
-    this.hand = new Card[2];
-    this.hand[0] = c1;
-    this.hand[1] = c2;
+  public Hand(Card c1, Card c2, String name){
+    hand = new Card[2];
+    hand[0] = c1;
+    hand[1] = c2;
+    owner = name;
   }
 
   public void hit(Card newCard){
-    Card[] temp = new Card[this.hand.length];
-    for (int i = 0; i < this.hand.length; i++) {
-      temp[i] = this.hand[i];
+    Card[] temp = new Card[hand.length];
+    for (int i = 0; i <  hand.length; i++) {
+      temp[i] =  hand[i];
     }
 
-    this.hand = new Card[temp.length+1];
+    hand = new Card[temp.length+1];
     for (int i = 0; i < temp.length; i++) {
-      this.hand[i] = temp[i];
+      hand[i] = temp[i];
     }
 
-    this.hand[this.hand.length-1] = newCard;
+     hand[hand.length-1] = newCard;
+  }
+
+  public Card[] getHand(){
+    return hand;
+  }
+
+  public String toString(){
+    String handOut = "";
+    for (int i = 0; i < hand.length; i++){
+      handOut += hand[i] + " "
+    }
+    return owner + "'s hand:\n" + handOut;
+  }
+
+  public int getHandValue(){
+    int sum = 0;
+    for(Card c : hand){
+      if c.getName()
+    }
   }
 }
