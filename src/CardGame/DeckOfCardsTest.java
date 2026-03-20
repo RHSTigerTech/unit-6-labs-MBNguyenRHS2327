@@ -1,9 +1,9 @@
 package CardGame;
 
 /**
- * Name:
- * Date:
- * Period:
+ * Name: Juliette Nguyen
+ * Date: 17/3/26
+ * Period: 3
  *
  * CardGame.DeckOfCardsTest.java
  *
