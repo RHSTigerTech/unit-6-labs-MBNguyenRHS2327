@@ -49,10 +49,10 @@ public class BlackJack {
 
         // 20% chance for a guest star (supposedly 2 per 10)
 
-        if (i > 3 && (int) (Math.random() * 100) > 80) {
+        if (i > 2 && (int) (Math.random() * 100) > 80) {
           // a second random number to chose a guest star list
           int random = (int) (Math.random()*30);
-
+          // and a supposed 30% chance to gt any category of guest star
           if (random <= 10) { // Sonic
             players[i] = guestStarSonic[(int) (Math.random() * (guestStarSonic.length - 1))];
             System.out.println("Special guest star: " + players[i] + ", from Sonic the Hedgehog!");
