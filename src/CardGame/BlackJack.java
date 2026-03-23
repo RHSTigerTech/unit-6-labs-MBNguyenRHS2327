@@ -21,13 +21,13 @@ public class BlackJack {
         "Nolan", "Jason", "Brian", "Marzi", "Amber", "Eli", "Carson", "Nickolas", "Eefqu", "Shae", "Percy", "Darryl&",
         "Nathan", "Patrick", "Hazel", "Zach", "Russel", "Leo" };
     String[] guestStarSonic = { "Sonic", "Tails", "Knuckles", "Amy", "Dr. Eggman", "Shadow", "Rouge", "Omega", "Silver",
-        "Blaze", "Vector", "Espio", "Charmy", "Mighty", "Ray" };
+        "Blaze", "Vector", "Espio", "Charmy", "Mighty", "Ray", "Metal Sonic" };
     String[] guestStarUma = { "Gold Ship", "Special Week", "Silence Suzuka", "Mejiro McQueen", "Tokai Teio",
         "Agnes Tachyon", "Agnes Digital", "Symboli Rudolf", "Oguri Cap", "Nice Nature", "Rice Shower", "Taiki Shuttle",
         "Aston Machan", "Daiwa Scarlet", "Vodka", "Curren Chan", "Daitaku Helios", "Daiichi Ruby", "Mejiro Palmer",
         "Kitasan Black", "Satano Diamond", "Gentildonna", "Gold City", "Tosen Jordan", "Maruzensky",
         "Matikanefukukitaru", "Matikanetannhouser", "Meisho Doto", "T.M Opera O", "Jungle Pocket", "Manhattan Cafe",
-        "Dantsu Flame", "Stay Gold", "Sakura Bakushin O", "Haru Urara", "Super Creek", "Mihono Burbon" };
+        "Dantsu Flame", "Stay Gold", "Sakura Bakushin O", "Haru Urara", "Super Creek", "Mihono Burbon", "Stardust Speedway", "Fenomeno" };
     String[] guestStarInventory = {"Heavy Weapons Guy", "CLAP-TRAP", "Sam", "Max", "Tycho", "Strong Bad", "Brock Samson", "GladOS"};
 
     // initialize player name
