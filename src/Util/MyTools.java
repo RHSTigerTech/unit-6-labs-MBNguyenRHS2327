@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 public class MyTools {
   /**
+   * A method to read any integer input by the user.
+   * <hr>
    * 
-   * @param prompt - the String prompt for the user
+   * @param prompt the String prompt for the user
    * @return the integer entered by the user
    */
   public static int readInt(String prompt) {
@@ -41,6 +43,10 @@ public class MyTools {
    * M: We've got to find the Princess.<br>
    * L: And you've gotta help us.<br>
    * M: If you need instructions of how to get through the hotels,
+   * <br>
+   * <br>
+   * A method to read any double input by the user.
+   * <hr>
    *
    * @param prompt the String prompt for the user
    * @return the double entered by the user
@@ -72,6 +78,10 @@ public class MyTools {
   /**
    * when a paizano puts his spaghetti noddle in a mama mia's ravioli, a little
    * bambino covered in prosciutto comes out 9 months later.
+   * <br>
+   * <br>
+   * A method to read any String input by the user including spaces.
+   * <hr>
    * 
    * @param prompt the String prompt for the user
    * @return the String entered by the user
@@ -91,6 +101,9 @@ public class MyTools {
   }
 
   /**
+   * A method to round up or down any double inputed by the user to a requested
+   * decimal place.
+   * <hr>
    * 
    * @param a the double input by the user
    * @param b the integer input by the user which corresponds to the decimal
@@ -102,6 +115,8 @@ public class MyTools {
   }
 
   /**
+   * A method that converts an integer to a binary output.
+   * <hr>
    * 
    * @param prompt the int prompt for the user up to 255
    * @return a String of the int entered by the user in binary up to 8 bits
@@ -120,6 +135,8 @@ public class MyTools {
   }
 
   /**
+   * A method that converts an integer to a hexidecimal output.
+   * <hr>
    * 
    * @param prompt the int prompt for the user up to 4095
    * @return a String of the int entered by the user in Hexidecimal up to 3 digits
@@ -141,22 +158,30 @@ public class MyTools {
     return hexadecimal;
   }
 
-  public static boolean readTwoOptions(String prompt, String confirm, String deny){
+  /**
+   * A Method that takes one of two inputs --a confirmation or denial prompt-- and
+   * outputs a true or false depending on the inputted message.
+   * <hr>
+   * 
+   * @param prompt  The imput prompt for the user.
+   * @param confirm The "Yes" or "True" option.
+   * @param deny    The "No" of "False" option.
+   * @return
+   */
+  public static boolean readTwoOptions(String prompt, String confirm, String deny) {
     // initialize a Scanner object
     Scanner userInput = new Scanner(System.in);
 
     // Print the prompt that the user wants to use
     System.out.print(prompt);
 
-    while (!userInput.nextLine().equalsIgnoreCase(confirm) || !userInput.nextLine().equalsIgnoreCase(deny)) {
-      userInput.nextLine(); // This takes whatever non double the user entered and throws it away
+    String input = userInput.nextLine();
+    while (!(input.equalsIgnoreCase(confirm) || input.equalsIgnoreCase(deny))) {
       System.out.print("Error\n" + prompt); // This prints Error then re-prompts the user
+      input = userInput.nextLine();
     }
 
-    // save the users input into a variable
-    String input = userInput.nextLine();
-
-    if (input.equalsIgnoreCase(confirm)){
+    if (input.equalsIgnoreCase(confirm)) {
       return true;
     } else {
       return false;
@@ -164,19 +189,21 @@ public class MyTools {
   }
 
   // public static int readMultiChoice(String prompt, String[] options) {
-  //   // initialize a Scanner object
-  //   Scanner userInput = new Scanner(System.in);
+  // // initialize a Scanner object
+  // Scanner userInput = new Scanner(System.in);
 
-  //   // Print the prompt that the user wants to use
-  //   System.out.print(prompt);
+  // // Print the prompt that the user wants to use
+  // System.out.print(prompt);
 
-  //   while (!options.) {
-  //     userInput.nextLine(); // This takes whatever non double the user entered and throws it away
-  //     System.out.print("Error\n" + prompt); // This prints Error then re-prompts the user
-  //   }
+  // while (!options.) {
+  // userInput.nextLine(); // This takes whatever non double the user entered and
+  // throws it away
+  // System.out.print("Error\n" + prompt); // This prints Error then re-prompts
+  // the user
+  // }
 
-  //   // save the users input into a variable
-  //   String input = userInput.nextLine();
+  // // save the users input into a variable
+  // String input = userInput.nextLine();
 
   // }
 }

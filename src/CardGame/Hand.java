@@ -13,13 +13,11 @@ public class Hand {
    * <hr>
    * 
    * @param c1   the first card of the new hand
-   * @param c2   the second card of the new hand
    * @param name the name of the hand's owner
    */
-  public Hand(Card c1, Card c2, String name) {
-    hand = new Card[2];
+  public Hand(Card c1, String name) {
+    hand = new Card[1];
     hand[0] = c1;
-    hand[1] = c2;
     owner = name;
     sum = getHandValue();
   }
@@ -75,12 +73,31 @@ public class Hand {
    * 
    * @return a formatted string of the hand object.
    */
-  public String toString() {
+  public String showHand() {
     String handOut = "";
+    String suffix = "";
+    sum = getHandValue();
     for (Card crd : hand) {
       handOut += crd + ", ";
     }
-    return owner + "'s hand:\n" + handOut + "(Value: " + sum + ")";
+    if (sum == 21){
+      suffix = "(Black-Jack!)";
+    } else if (sum > 21){
+      suffix = "(out!)";
+    }
+    return owner + "'s hand:\n" + handOut + "(Value: " + sum + ")" + suffix;
+  }
+
+  public String showDealer(){
+    String handOut = "";
+    for (int i = 0; i < hand.length; i++) {
+      if (i > 0){
+        handOut += "?, ";
+      } else {
+        handOut += hand[i] + ", ";
+      }
+    }
+    return "The Dealer's hand:\n" + handOut + "(Value: ?)";
   }
 
   /**
