@@ -166,7 +166,7 @@ public class MyTools {
    * @param prompt  The imput prompt for the user.
    * @param confirm The "Yes" or "True" option.
    * @param deny    The "No" of "False" option.
-   * @return
+   * @return Either true or false depending on the user's input
    */
   public static boolean readTwoOptions(String prompt, String confirm, String deny) {
     // initialize a Scanner object
