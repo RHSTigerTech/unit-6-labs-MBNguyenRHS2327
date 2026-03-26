@@ -38,33 +38,11 @@ public class BlackJack {
     }
 
     // Auto generated and guest star names
-    ArrayList<String> autoGenNames = new ArrayList<String>(
-        Arrays.asList("Julie", "August", "Lukas", "Max", "Adam", "Maddie", "Kody", "Toby", "Mr. Crockett", "Nolan",
-            "Jason", "Brian", "Marzi", "Amber", "Eli", "Carson", "Nickolas", "Eefqu", "Shae", "Percy", "Darryl&",
-            "Nathan", "Patrick", "Hazel", "Zach", "Russel", "Leo", "Alexis"));
-    ArrayList<String> guestStarSonic = new ArrayList<String>(
-        Arrays.asList("Sonic", "Tails", "Knuckles", "Amy", "Dr. Eggman", "Shadow", "Rouge", "Omega", "Silver", "Blaze",
-            "Vector", "Espio", "Charmy", "Mighty", "Ray", "Metal Sonic"));
-    ArrayList<String> guestStarUma = new ArrayList<String>(
-        Arrays.asList("Gold Ship", "Special Week", "Silence Suzuka",
-            "Mejiro McQueen", "Tokai Teio", "Agnes Tachyon", "Agnes Digital", "Symboli Rudolf", "Oguri Cap",
-            "Nice Nature",
-            "Rice Shower", "Taiki Shuttle", "Aston Machan", "Daiwa Scarlet", "Vodka", "Curren Chan", "Daitaku Helios",
-            "Daiichi Ruby", "Mejiro Palmer", "Kitasan Black", "Satano Diamond", "Gentildonna", "Gold City",
-            "Tosen Jordan",
-            "Maruzensky", "Matikanefukukitaru", "Matikanetannhouser", "Meisho Doto", "T.M Opera O", "Jungle Pocket",
-            "Manhattan Cafe", "Dantsu Flame", "Stay Gold", "Sakura Bakushin O", "Haru Urara", "Super Creek",
-            "Mihono Burbon", "Stardust Speedway", "Fenomeno"));
-    ArrayList<String> guestStarInventory = new ArrayList<String>(
-        Arrays.asList("Heavy Weapons Guy", "CLAP-TRAP", "Sam", "Max", "Tycho", "Strong Bad",
-            "Brock Samson", "GladOS"));
-    ArrayList<String> guestStarResident = new ArrayList<String>(
-        Arrays.asList("Leon Kenedy", "Ada Wong",
-            "Albert Wesker", "Luis Sera", "Claire Redfield",
-            "Sherry Birkin", "Jill Valentine", "Carlos Oliveira", "Nemesis", "Chris Redfield", "Ethan Winters",
-            "Ashley Graham", "Rebecca Chambers", "Hunk", "Alcina Dimitrescu", "Karl Heisenberg", "Moira Burton",
-            "Rosemary Winters", "Eveline", "Joe Baker", "Jack Krauser", "Isidro Uriarte Talavera", "Merchant",
-            "The Duke"));
+    ArrayList<String> autoGenNames = new ArrayList<String>(Arrays.asList("Julie", "August", "Lukas", "Max", "Adam", "Maddie", "Kody", "Toby", "Mr. Crockett", "Nolan", "Jason", "Brian", "Marzi", "Amber", "Eli", "Carson", "Nickolas", "Eefqu", "Shae", "Percy", "Darryl&", "Nathan", "Patrick", "Hazel", "Zach", "Russel", "Leo", "Alexis"));
+    ArrayList<String> guestStarSonic = new ArrayList<String>(Arrays.asList("Sonic", "Tails", "Knuckles", "Amy", "Dr. Eggman", "Shadow", "Rouge", "Omega", "Silver", "Blaze", "Vector", "Espio", "Charmy", "Mighty", "Ray", "Metal Sonic"));
+    ArrayList<String> guestStarUma = new ArrayList<String>(Arrays.asList("Gold Ship", "Special Week", "Silence Suzuka", "Mejiro McQueen", "Tokai Teio", "Agnes Tachyon", "Agnes Digital", "Symboli Rudolf", "Oguri Cap","Nice Nature", "Rice Shower", "Taiki Shuttle", "Aston Machan", "Daiwa Scarlet", "Vodka", "Curren Chan", "Daitaku Helios", "Daiichi Ruby", "Mejiro Palmer", "Kitasan Black", "Satano Diamond", "Gentildonna", "Gold City", "Tosen Jordan", "Maruzensky", "Matikanefukukitaru", "Matikanetannhouser", "Meisho Doto", "T.M Opera O", "Jungle Pocket", "Manhattan Cafe", "Dantsu Flame", "Stay Gold", "Sakura Bakushin O", "Haru Urara", "Super Creek", "Mihono Burbon", "Stardust Speedway", "Fenomeno"));
+    ArrayList<String> guestStarInventory = new ArrayList<String>(Arrays.asList("Heavy Weapons Guy", "CLAP-TRAP", "Sam", "Max", "Tycho", "Strong Bad", "Brock Samson", "GladOS"));
+    ArrayList<String> guestStarResident = new ArrayList<String>(Arrays.asList("Leon Kenedy", "Ada Wong", "Albert Wesker", "Luis Sera", "Claire Redfield", "Sherry Birkin", "Jill Valentine", "Carlos Oliveira", "Nemesis", "Chris Redfield", "Ethan Winters", "Ashley Graham", "Rebecca Chambers", "Hunk", "Alcina Dimitrescu", "Karl Heisenberg", "Moira Burton", "Rosemary Winters", "Eveline", "Joe Baker", "Jack Krauser", "Isidro Uriarte Talavera", "Merchant", "The Duke"));
 
     // initialize player name
     players[0] = MyTools.readString("What is your name?\n");
@@ -151,19 +129,17 @@ public class BlackJack {
 
     System.out.println("-----\n\nLets play!\n\n");
     int stayCount = 0; // play until all players stay
-    while (stayCount != players.length - 2) { // actual gameplay loop
-      stayCount = 0;
+    while (stayCount != players.length - 1) { // actual gameplay loop
       // System.out.println(stayCount);
       for (int i = 0; i < players.length - 1; i++) { // turn loop
+        stayCount = 0;
         TimeUnit.SECONDS.sleep(1);
 
         if (tableHands[i].getHandValue() > 21) { // bust skip
           System.out.printf("Oops, sorry, %s. Looks like you've busted at a hand value of %d\n", players[i],
               tableHands[i].getHandValue());
-          stayCount++;
         } else if (tableHands[i].getHandValue() == 21) { // black-jack skip
           System.out.printf("Congrats, %s, you got a Black-Jack!\n", players[i]);
-          stayCount++;
         } else if (i > 0) { // ai choice
           System.out.printf("Its %1$s's turn. %1$s, do you hit, or do you stay? (Hand value: %2$d)\n", players[i],
               tableHands[i].getHandValue());
@@ -190,6 +166,9 @@ public class BlackJack {
             TimeUnit.SECONDS.sleep(1);
           }
         }
+        if (tableHands[i].getHandValue() >= 21) {
+          stayCount++;
+        }
         System.out.println(tableHands[i].showHand() + "\n~~~");
         TimeUnit.SECONDS.sleep(1);
       } // end turn loop
@@ -203,24 +182,28 @@ public class BlackJack {
       }
       System.out.println(tableHands[tableHands.length - 1].showDealer() + "\n~~~");
     } // end of gameplay loop
-
+    TimeUnit.SECONDS.sleep(1);
     System.out
         .println("Everyone has decided to stay! Heres a review of everyone's scores before the dealer gets his cards:");
     for (int j = 0; j < tableHands.length - 1; j++) {
+      TimeUnit.SECONDS.sleep(1);
       System.out.println(tableHands[j].getOwner() + "'s hand: " + tableHands[j].getHandValue() + "\n~~~");
     }
+    TimeUnit.SECONDS.sleep(1);
     System.out.println("The dealer is now getting his cards...\n" + tableHands[tableHands.length - 1].showHand());
     while (tableHands[tableHands.length - 1].getHandValue() < 17) {
+      TimeUnit.SECONDS.sleep(1);
       tableHands[tableHands.length - 1].hit(tableDeck.dealCard());
       System.out.println(tableHands[tableHands.length - 1].showHand());
     }
 
     for (int i = 0; i < tableHands.length - 1; i++) {
+      TimeUnit.SECONDS.sleep(1);
       if (tableHands[i].getHandValue() >= tableHands[tableHands.length - 1].getHandValue()
-          && tableHands[i].getHandValue() <= 21) {
-        System.out.printf("Congratulations %s, you won some cash!", players[i]);
+          && tableHands[i].getHandValue() <= 21 || tableHands[tableHands.length - 1].getHandValue() > 21) {
+        System.out.printf("Congratulations %s, you won some cash!\n", players[i]);
       } else {
-        System.out.printf("Ooh, sorry %s, looks like you lost your cash.", players[i]);
+        System.out.printf("Ooh, sorry %s, looks like you lost your cash.\n", players[i]);
       }
     }
 
