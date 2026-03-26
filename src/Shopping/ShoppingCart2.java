@@ -45,7 +45,7 @@ public class ShoppingCart2 {
     }
 
     cart[itemCount] = new Item(itemName, price, quantity);
-    totalPrice += price;
+    totalPrice += price*quantity;
     itemCount += 1;
 
   }

@@ -38,29 +38,33 @@ public class BlackJack {
     }
 
     // Auto generated and guest star names
-    ArrayList<String> autoGenNames = new ArrayList<String>(Arrays.asList("Julie", "August", "Lukas", "Max", "Adam",
-        "Maddie", "Kody", "Toby", "Mr. Crockett",
-        "Nolan", "Jason", "Brian", "Marzi", "Amber", "Eli", "Carson", "Nickolas", "Eefqu", "Shae", "Percy", "Darryl&",
-        "Nathan", "Patrick", "Hazel", "Zach", "Russel", "Leo", "Alexis"));
+    ArrayList<String> autoGenNames = new ArrayList<String>(
+        Arrays.asList("Julie", "August", "Lukas", "Max", "Adam", "Maddie", "Kody", "Toby", "Mr. Crockett", "Nolan",
+            "Jason", "Brian", "Marzi", "Amber", "Eli", "Carson", "Nickolas", "Eefqu", "Shae", "Percy", "Darryl&",
+            "Nathan", "Patrick", "Hazel", "Zach", "Russel", "Leo", "Alexis"));
     ArrayList<String> guestStarSonic = new ArrayList<String>(
-        Arrays.asList("Sonic", "Tails", "Knuckles", "Amy", "Dr. Eggman", "Shadow", "Rouge", "Omega", "Silver",
-            "Blaze", "Vector", "Espio", "Charmy", "Mighty", "Ray", "Metal Sonic"));
-    ArrayList<String> guestStarUma = new ArrayList<String>(Arrays.asList("Gold Ship", "Special Week", "Silence Suzuka",
-        "Mejiro McQueen", "Tokai Teio",
-        "Agnes Tachyon", "Agnes Digital", "Symboli Rudolf", "Oguri Cap", "Nice Nature", "Rice Shower", "Taiki Shuttle",
-        "Aston Machan", "Daiwa Scarlet", "Vodka", "Curren Chan", "Daitaku Helios", "Daiichi Ruby", "Mejiro Palmer",
-        "Kitasan Black", "Satano Diamond", "Gentildonna", "Gold City", "Tosen Jordan", "Maruzensky",
-        "Matikanefukukitaru", "Matikanetannhouser", "Meisho Doto", "T.M Opera O", "Jungle Pocket", "Manhattan Cafe",
-        "Dantsu Flame", "Stay Gold", "Sakura Bakushin O", "Haru Urara", "Super Creek", "Mihono Burbon",
-        "Stardust Speedway", "Fenomeno"));
+        Arrays.asList("Sonic", "Tails", "Knuckles", "Amy", "Dr. Eggman", "Shadow", "Rouge", "Omega", "Silver", "Blaze",
+            "Vector", "Espio", "Charmy", "Mighty", "Ray", "Metal Sonic"));
+    ArrayList<String> guestStarUma = new ArrayList<String>(
+        Arrays.asList("Gold Ship", "Special Week", "Silence Suzuka",
+            "Mejiro McQueen", "Tokai Teio", "Agnes Tachyon", "Agnes Digital", "Symboli Rudolf", "Oguri Cap",
+            "Nice Nature",
+            "Rice Shower", "Taiki Shuttle", "Aston Machan", "Daiwa Scarlet", "Vodka", "Curren Chan", "Daitaku Helios",
+            "Daiichi Ruby", "Mejiro Palmer", "Kitasan Black", "Satano Diamond", "Gentildonna", "Gold City",
+            "Tosen Jordan",
+            "Maruzensky", "Matikanefukukitaru", "Matikanetannhouser", "Meisho Doto", "T.M Opera O", "Jungle Pocket",
+            "Manhattan Cafe", "Dantsu Flame", "Stay Gold", "Sakura Bakushin O", "Haru Urara", "Super Creek",
+            "Mihono Burbon", "Stardust Speedway", "Fenomeno"));
     ArrayList<String> guestStarInventory = new ArrayList<String>(
         Arrays.asList("Heavy Weapons Guy", "CLAP-TRAP", "Sam", "Max", "Tycho", "Strong Bad",
             "Brock Samson", "GladOS"));
-    ArrayList<String> guestStarResident = new ArrayList<String>(Arrays.asList("Leon Kenedy", "Ada Wong",
-        "Albert Wesker", "Luis Sera", "Claire Redfield",
-        "Sherry Birkin", "Jill Valentine", "Carlos Oliveira", "Nemesis", "Chris Redfield", "Ethan Winters",
-        "Ashley Graham", "Rebecca Chambers", "Hunk", "Alcina Dimitrescu", "Karl Heisenberg", "Moira Burton",
-        "Rosemary Winters", "Eveline", "Joe Baker", "Jack Krauser", "Isidro Uriarte Talavera", "Merchant", "The Duke"));
+    ArrayList<String> guestStarResident = new ArrayList<String>(
+        Arrays.asList("Leon Kenedy", "Ada Wong",
+            "Albert Wesker", "Luis Sera", "Claire Redfield",
+            "Sherry Birkin", "Jill Valentine", "Carlos Oliveira", "Nemesis", "Chris Redfield", "Ethan Winters",
+            "Ashley Graham", "Rebecca Chambers", "Hunk", "Alcina Dimitrescu", "Karl Heisenberg", "Moira Burton",
+            "Rosemary Winters", "Eveline", "Joe Baker", "Jack Krauser", "Isidro Uriarte Talavera", "Merchant",
+            "The Duke"));
 
     // initialize player name
     players[0] = MyTools.readString("What is your name?\n");
@@ -81,6 +85,7 @@ public class BlackJack {
           System.out.println("And last but not least...");
           TimeUnit.SECONDS.sleep(1);
         }
+        int randIndex = 0;
 
         // 20% chance for a guest star (supposedly 2 per 10)
 
@@ -89,35 +94,37 @@ public class BlackJack {
           int random = (int) (Math.random() * 40) + 1;
           // and a supposed 30% chance to gt any category of guest star
           if (random <= 10) { // Sonic
-            players[i] = guestStarSonic.get((int) (Math.random() * (guestStarSonic.size())));
-            guestStarSonic.remove(i - 1);
+            randIndex = (int) (Math.random() * (guestStarSonic.size()));
+            players[i] = guestStarSonic.get(randIndex);
+            guestStarSonic.remove(randIndex);
             System.out.printf("Special guest star: %s, from Sonic the Hedgehog!\n", players[i]);
+            // end sonic
           } else if (random > 10 && random <= 20) { // Uma
-            players[i] = guestStarUma.get((int) (Math.random() * (guestStarUma.size())));
-            guestStarUma.remove(i - 1);
+            randIndex = (int) (Math.random() * (guestStarUma.size()));
+            players[i] = guestStarUma.get(randIndex);
+            guestStarUma.remove(randIndex);
             System.out.printf("Special guest star: %s, from Uma Musume!\n", players[i]);
+            // end uma
           } else if (random > 20 && random <= 30) { // Inventory
-            players[i] = guestStarInventory.get((int) (Math.random() * (guestStarInventory.size())));
-            guestStarInventory.remove(i - 1);
-            System.out.printf("Special guest star: %s, from Poker Night at the Inventory!\n",
-                players[i]);
+            randIndex = (int) (Math.random() * (guestStarUma.size()));
+            players[i] = guestStarInventory.get(randIndex);
+            guestStarInventory.remove(randIndex);
+            System.out.printf("Special guest star: %s, from Poker Night at the Inventory!\n", players[i]);
+            // end inventory
           } else if (random > 30 && random <= 40) { // Resident Evil
-            players[i] = guestStarResident.get((int) (Math.random() * (guestStarResident.size())));
-            guestStarResident.remove(i - 1);
-            System.out.printf("Special guest star: %s, from Resident Evil!\n",
-                players[i]);
+            randIndex = (int) (Math.random() * (guestStarResident.size()));
+            players[i] = guestStarResident.get(randIndex);
+            guestStarResident.remove(randIndex);
+            System.out.printf("Special guest star: %s, from Resident Evil!\n", players[i]);
+            // end resident
           }
 
         } else { // normal names
-          players[i] = autoGenNames.get((int) (Math.random() * (autoGenNames.size())));
-          autoGenNames.remove(i - 1);
+          randIndex = (int) (Math.random() * (autoGenNames.size()));
+          players[i] = autoGenNames.get(randIndex);
+          autoGenNames.remove(randIndex);
           System.out.println(players[i]);
         }
-        System.out.println(autoGenNames);
-        System.out.println(guestStarSonic);
-        System.out.println(guestStarUma);
-        System.out.println(guestStarInventory);
-        System.out.println(guestStarResident);
 
       }
 
@@ -206,6 +213,15 @@ public class BlackJack {
     while (tableHands[tableHands.length - 1].getHandValue() < 17) {
       tableHands[tableHands.length - 1].hit(tableDeck.dealCard());
       System.out.println(tableHands[tableHands.length - 1].showHand());
+    }
+
+    for (int i = 0; i < tableHands.length - 1; i++) {
+      if (tableHands[i].getHandValue() >= tableHands[tableHands.length - 1].getHandValue()
+          && tableHands[i].getHandValue() <= 21) {
+        System.out.printf("Congratulations %s, you won some cash!", players[i]);
+      } else {
+        System.out.printf("Ooh, sorry %s, looks like you lost your cash.", players[i]);
+      }
     }
 
   }
