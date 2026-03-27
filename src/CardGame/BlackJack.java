@@ -208,7 +208,7 @@ public class BlackJack {
     for (int i = 0; i < tableHands.length - 1; i++) {
       TimeUnit.SECONDS.sleep(1);
       if (tableHands[i].getHandValue() >= tableHands[tableHands.length - 1].getHandValue()
-          && tableHands[i].getHandValue() <= 21 || tableHands[tableHands.length - 1].getHandValue() > 21) {
+          && tableHands[i].getHandValue() <= 21 || tableHands[tableHands.length - 1].getHandValue() > 21 && tableHands[i].getHandValue() <= 21) {
         System.out.printf("Congratulations %s, you won some cash!\n", players[i]);
       } else {
         System.out.printf("Ooh, sorry %s, looks like you lost your cash.\n", players[i]);
