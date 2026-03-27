@@ -139,9 +139,6 @@ public class BlackJack {
       // System.out.println(stayCount);
       stayCount = 0;
       for (int i = 0; i < players.length - 1; i++) { // turn loop
-        
-        System.out.println(players.length);
-        System.out.println(stayCount);
         TimeUnit.SECONDS.sleep(1);
 
         if (tableHands[i].getHandValue() > 21) { // bust skip
