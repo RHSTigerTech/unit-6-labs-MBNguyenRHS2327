@@ -90,7 +90,7 @@ public class BlackJack {
             System.out.printf("Special guest star: %s, from Uma Musume!\n", players[i]);
             // end uma
           } else if (random > 20 && random <= 30) { // Inventory
-            randIndex = (int) (Math.random() * (guestStarUma.size()));
+            randIndex = (int) (Math.random() * (guestStarInventory.size()));
             players[i] = guestStarInventory.get(randIndex);
             guestStarInventory.remove(randIndex);
             System.out.printf("Special guest star: %s, from Poker Night at the Inventory!\n", players[i]);
