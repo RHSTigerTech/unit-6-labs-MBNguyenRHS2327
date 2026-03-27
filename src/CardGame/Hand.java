@@ -110,7 +110,7 @@ public class Hand {
    */
   public int getHandValue() {
     sum = 0;
-    int aceCount = 0;
+    boolean bigAce = false;
 
     for (Card c : hand) {
       if (c.getFace().equals("Two")) {
@@ -133,16 +133,16 @@ public class Hand {
           || c.getFace().equals("Jack")) {
         sum += 10;
       } else if (c.getFace().equals("Ace")) {
-        if (sum + 11 <= 21 && aceCount == 0) {
+        if (sum + 11 <= 21 && !bigAce) {
           sum += 11;
+          bigAce = true;
         } else {
           sum += 1;
         }
-        aceCount++;
       }
     }
     
-    if (sum > 21 && aceCount > 0){
+    if (sum > 21 && bigAce){
       sum -= 10;
     }
 

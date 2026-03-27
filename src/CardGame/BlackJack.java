@@ -43,6 +43,7 @@ public class BlackJack {
     ArrayList<String> guestStarUma = new ArrayList<String>(Arrays.asList("Gold Ship", "Special Week", "Silence Suzuka", "Mejiro McQueen", "Tokai Teio", "Agnes Tachyon", "Agnes Digital", "Symboli Rudolf", "Oguri Cap","Nice Nature", "Rice Shower", "Taiki Shuttle", "Aston Machan", "Daiwa Scarlet", "Vodka", "Curren Chan", "Daitaku Helios", "Daiichi Ruby", "Mejiro Palmer", "Kitasan Black", "Satano Diamond", "Gentildonna", "Gold City", "Tosen Jordan", "Maruzensky", "Matikanefukukitaru", "Matikanetannhouser", "Meisho Doto", "T.M Opera O", "Jungle Pocket", "Manhattan Cafe", "Dantsu Flame", "Stay Gold", "Sakura Bakushin O", "Haru Urara", "Super Creek", "Mihono Burbon", "Stardust Speedway", "Fenomeno"));
     ArrayList<String> guestStarInventory = new ArrayList<String>(Arrays.asList("Heavy Weapons Guy", "CLAP-TRAP", "Sam", "Max", "Tycho", "Strong Bad", "Brock Samson", "GladOS"));
     ArrayList<String> guestStarResident = new ArrayList<String>(Arrays.asList("Leon Kenedy", "Ada Wong", "Albert Wesker", "Luis Sera", "Claire Redfield", "Sherry Birkin", "Jill Valentine", "Carlos Oliveira", "Nemesis", "Chris Redfield", "Ethan Winters", "Ashley Graham", "Rebecca Chambers", "Hunk", "Alcina Dimitrescu", "Karl Heisenberg", "Moira Burton", "Rosemary Winters", "Eveline", "Joe Baker", "Jack Krauser", "Isidro Uriarte Talavera", "Merchant", "The Duke"));
+    int guestListCount = 4;
 
     // initialize player name
     players[0] = MyTools.readString("What is your name?\n");
@@ -52,14 +53,17 @@ public class BlackJack {
     TimeUnit.SECONDS.sleep(1);
     // naming CPUs
     if (players.length > 2) {
-      System.out.printf("-----\nAnd you'll be playing with these %d players...\n", players.length - 2);
-
+      if (players.length > 3) {
+        System.out.printf("-----\nAnd you'll be playing with these %d players...\n", players.length - 2);
+      } else{
+        System.out.println("-----\nAnd you'll be playing with...");
+      }
       // goes from the second index onward but not the last one, the dealer
       for (int i = 1; i < players.length - 1; i++) {
         TimeUnit.SECONDS.sleep(1);
 
         // announce the final player
-        if (i == players.length - 2) {
+        if (i == players.length - 2 && players.length > 3) {
           System.out.println("And last but not least...");
           TimeUnit.SECONDS.sleep(1);
         }
@@ -69,7 +73,7 @@ public class BlackJack {
 
         if (i > 2 && (int) (Math.random() * 100) + 1 >= 80) {
           // a second random number to chose a guest star list
-          int random = (int) (Math.random() * 40) + 1;
+          int random = (int) (Math.random() * (10*guestListCount)) + 1;
           // and a supposed 30% chance to gt any category of guest star
           if (random <= 10) { // Sonic
             randIndex = (int) (Math.random() * (guestStarSonic.size()));
@@ -138,8 +142,10 @@ public class BlackJack {
         if (tableHands[i].getHandValue() > 21) { // bust skip
           System.out.printf("Oops, sorry, %s. Looks like you've busted at a hand value of %d\n", players[i],
               tableHands[i].getHandValue());
+              TimeUnit.SECONDS.sleep(1);
         } else if (tableHands[i].getHandValue() == 21) { // black-jack skip
           System.out.printf("Congrats, %s, you got a Black-Jack!\n", players[i]);
+          TimeUnit.SECONDS.sleep(1);
         } else if (i > 0) { // ai choice
           System.out.printf("Its %1$s's turn. %1$s, do you hit, or do you stay? (Hand value: %2$d)\n", players[i],
               tableHands[i].getHandValue());
