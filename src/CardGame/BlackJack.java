@@ -38,9 +38,11 @@ public class BlackJack {
     }
 
     // Auto generated and guest star names
-    ArrayList<String> autoGenNames = new ArrayList<String>(Arrays.asList("Julie", "August", "Lukas", "Max", "Adam", "Maddie", "Kody", "Toby", "Mr. Crockett", "Nolan", "Jason", "Brian", "Marzi", "Amber", "Eli", "Carson", "Nickolas", "Eefqu", "Shae", "Percy", "Darryl&", "Nathan", "Patrick", "Hazel", "Zach", "Russel", "Leo", "Alexis"));
+    ArrayList<String> autoGenNames = new ArrayList<String>(Arrays.asList("Julie", "August", "Lukas", "Maxwell", "Adam", "Maddie", "Kody", "Toby", "Mr. Crockett", "Nolan", "Jason", "Brian", "Marzi", "Amber", "Eli", "Carson", "Nickolas", "Eefqu", "Shae", "Percy", "Darryl&", "Nathan", "Patrick", "Hazel", "Zach", "Russel", "Leo", "Alexis"));
+    // guest star template vvvvvv
+    // ArrayList<String> guestStar = new ArrayList<String>(Arrays.asList("name1", "name2")); 
     ArrayList<String> guestStarSonic = new ArrayList<String>(Arrays.asList("Sonic", "Tails", "Knuckles", "Amy", "Dr. Eggman", "Shadow", "Rouge", "Omega", "Silver", "Blaze", "Vector", "Espio", "Charmy", "Mighty", "Ray", "Metal Sonic"));
-    ArrayList<String> guestStarUma = new ArrayList<String>(Arrays.asList("Gold Ship", "Special Week", "Silence Suzuka", "Mejiro McQueen", "Tokai Teio", "Agnes Tachyon", "Agnes Digital", "Symboli Rudolf", "Oguri Cap","Nice Nature", "Rice Shower", "Taiki Shuttle", "Aston Machan", "Daiwa Scarlet", "Vodka", "Curren Chan", "Daitaku Helios", "Daiichi Ruby", "Mejiro Palmer", "Kitasan Black", "Satano Diamond", "Gentildonna", "Gold City", "Tosen Jordan", "Maruzensky", "Matikanefukukitaru", "Matikanetannhouser", "Meisho Doto", "T.M Opera O", "Jungle Pocket", "Manhattan Cafe", "Dantsu Flame", "Stay Gold", "Sakura Bakushin O", "Haru Urara", "Super Creek", "Mihono Burbon", "Stardust Speedway", "Fenomeno"));
+    ArrayList<String> guestStarUma = new ArrayList<String>(Arrays.asList("Gold Ship", "Special Week", "Silence Suzuka", "Mejiro McQueen", "Tokai Teio", "Agnes Tachyon", "Agnes Digital", "Symboli Rudolf", "Oguri Cap", "Nice Nature", "Rice Shower", "Taiki Shuttle", "Aston Machan", "Daiwa Scarlet", "Vodka", "Curren Chan", "Daitaku Helios", "Daiichi Ruby", "Mejiro Palmer", "Kitasan Black", "Satano Diamond", "Gentildonna", "Gold City", "Tosen Jordan", "Maruzensky", "Matikanefukukitaru", "Matikanetannhouser", "Meisho Doto", "T.M Opera O", "Jungle Pocket", "Manhattan Cafe", "Dantsu Flame", "Stay Gold", "Sakura Bakushin O", "Haru Urara", "Super Creek", "Mihono Burbon", "Stardust Speedway", "Fenomeno"));
     ArrayList<String> guestStarInventory = new ArrayList<String>(Arrays.asList("Heavy Weapons Guy", "CLAP-TRAP", "Sam", "Max", "Tycho", "Strong Bad", "Brock Samson", "GladOS"));
     ArrayList<String> guestStarResident = new ArrayList<String>(Arrays.asList("Leon Kenedy", "Ada Wong", "Albert Wesker", "Luis Sera", "Claire Redfield", "Sherry Birkin", "Jill Valentine", "Carlos Oliveira", "Nemesis", "Chris Redfield", "Ethan Winters", "Ashley Graham", "Rebecca Chambers", "Hunk", "Alcina Dimitrescu", "Karl Heisenberg", "Moira Burton", "Rosemary Winters", "Eveline", "Joe Baker", "Jack Krauser", "Isidro Uriarte Talavera", "Merchant", "The Duke"));
     int guestListCount = 4;
@@ -55,7 +57,7 @@ public class BlackJack {
     if (players.length > 2) {
       if (players.length > 3) {
         System.out.printf("-----\nAnd you'll be playing with these %d players...\n", players.length - 2);
-      } else{
+      } else {
         System.out.println("-----\nAnd you'll be playing with...");
       }
       // goes from the second index onward but not the last one, the dealer
@@ -73,7 +75,7 @@ public class BlackJack {
 
         if (i > 2 && (int) (Math.random() * 100) + 1 >= 80) {
           // a second random number to chose a guest star list
-          int random = (int) (Math.random() * (10*guestListCount)) + 1;
+          int random = (int) (Math.random() * (10 * guestListCount)) + 1;
           // and a supposed 30% chance to gt any category of guest star
           if (random <= 10) { // Sonic
             randIndex = (int) (Math.random() * (guestStarSonic.size()));
@@ -135,14 +137,17 @@ public class BlackJack {
     int stayCount = 0; // play until all players stay
     while (stayCount != players.length - 1) { // actual gameplay loop
       // System.out.println(stayCount);
+      stayCount = 0;
       for (int i = 0; i < players.length - 1; i++) { // turn loop
-        stayCount = 0;
+        
+        System.out.println(players.length);
+        System.out.println(stayCount);
         TimeUnit.SECONDS.sleep(1);
 
         if (tableHands[i].getHandValue() > 21) { // bust skip
           System.out.printf("Oops, sorry, %s. Looks like you've busted at a hand value of %d\n", players[i],
               tableHands[i].getHandValue());
-              TimeUnit.SECONDS.sleep(1);
+          TimeUnit.SECONDS.sleep(1);
         } else if (tableHands[i].getHandValue() == 21) { // black-jack skip
           System.out.printf("Congrats, %s, you got a Black-Jack!\n", players[i]);
           TimeUnit.SECONDS.sleep(1);
@@ -216,10 +221,12 @@ public class BlackJack {
   }
 
   public static boolean aiChoice(int handValue) {
-    int risk = (int) (Math.random() * 100);
-    if (handValue < 16) {
+    int risk = (int) (Math.random() * 100) + 1;
+    if (handValue <= 15) {
       return true;
-    } else if (handValue >= 16 && risk >= 80) {
+    } else if (handValue > 15 && handValue <=17 && risk >= 80) {
+      return true;
+    } else if (handValue > 17 && risk >= 95){
       return true;
     } else {
       return false;
